@@ -95,16 +95,33 @@ const resolvers = {
       }
       return foundAuthor;
     },
+
     addNote: async (parent, args) => {
       const newNote = new NoteModel(args);
       await newNote.save();
       return newNote;
     },
+
     updateNote: async (parent, args) => {
       const noteId = args.id;
       const updateNote = await NoteModel.findByIdAndUpdate(noteId, args);
       return updateNote;
     },
+
+    deleteNote: async (parent, args) => {
+      const noteId = args.id;
+      console.log("««««« noteId »»»»»", args);
+      const deleteNote = await NoteModel.deleteOne({ _id: noteId });
+      return deleteNote;
+    },
+
+    deleteFolder: async (parent, args) => {
+      const folderId = args.id;
+      console.log("««««« noteId »»»»»", args);
+      const deleteFolder = await FolderModel.deleteOne({ _id: folderId });
+      return deleteFolder;
+    },
+
     notification: async (parent, args) => {
       const newNotification = new NotificationModel(args);
       await newNotification.save();

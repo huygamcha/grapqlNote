@@ -19,13 +19,13 @@ function Note() {
     const location = useLocation();
     const submit = useSubmit()
 
-    console.log('««««« note »»»»»', note);
+    // console.log('««««« note »»»»»', note);
     const [editorState, setEditorState] = useState(() => {
         return EditorState.createEmpty()
     })
 
     // lấy nội dung được nhập
-    const [rawHTML, setRawHTML] = useState(note.content)
+    const [rawHTML, setRawHTML] = useState(note?.content)
 
     const handleOnChange = (e) => {
         setEditorState(e);
@@ -45,7 +45,7 @@ function Note() {
     
       const debouncedMemorized = useMemo(() => {
         return debounce((rawHTML, note, pathname) => {
-            console.log('««««« pathname ok»»»»»', pathname);
+            // console.log('««««« pathname ok»»»»»', pathname);
           if (rawHTML === note.content) return;
     
           submit({...note, content: rawHTML}, {
@@ -65,7 +65,6 @@ function Note() {
         setEditorState(EditorState.createWithContent(state));
     }, [note.id]);
 
-    console.log('««««« rawHTML »»»»»', rawHTML);
     return (
         <Editor editorState={editorState} onEditorStateChange={handleOnChange} placeholder="write something"></Editor>
     )

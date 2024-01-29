@@ -57,7 +57,7 @@ console.log('««««« data »»»»»', data);
     })();
   }, []);
 
-  console.log('««««« notification »»»»»', notification);
+  // console.log('««««« notification »»»»»', notification);
   return (
     <>
       <Badge

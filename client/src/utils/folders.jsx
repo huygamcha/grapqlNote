@@ -36,3 +36,22 @@ export const folderList =  async () => {
          console.log('««««« error »»»»»', error);
       }
    }
+
+   export const deleteFolder =  async (params) => {
+      console.log('««««« params »»»»»', params);
+      try {
+          const query = `mutation Mutation($id: String!) {
+            deleteFolder(id: $id) {
+              name
+              id
+            }
+          } `;
+            const data = await requestGraphql({query, variables: params})
+            return data;
+          
+      } catch (error) {
+          console.log('««««« error »»»»»', error);
+      }
+    }
+    
+    

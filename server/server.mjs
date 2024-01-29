@@ -50,9 +50,11 @@ const typeDefs = `#graphql
     }
 
     type Mutation {
-        addFolder(name: String!): Folder,
         register(uid: String!, name: String!): Author
+        addFolder(name: String!): Folder,
         addNote(content: String, folderId: String!): Note
+        deleteNote(id: String!): Note
+        deleteFolder(id: String!): Folder
         updateNote(content: String!, id: String!): Note
         notification(content: String): Message
     }

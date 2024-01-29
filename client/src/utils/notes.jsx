@@ -41,6 +41,26 @@ export const noteItem =  async ({params}) => {
     }
 }
 
+export const deleteNote =  async (params) => {
+  console.log('««««« params 1»»»»»', params);
+  try {
+      const query = `mutation Mutation($id: String!) {
+        deleteNote(id: $id) {
+          content
+          id
+          updatedAt
+        }
+      } `;
+        const data = await requestGraphql({query, variables: params})
+        return data;
+      
+  } catch (error) {
+      console.log('««««« error »»»»»', error);
+  }
+}
+
+
+
 
 export const addNewNote = async ({ request}) => {
   // nhận dữ liệu từ useSubmit
@@ -56,7 +76,7 @@ export const addNewNote = async ({ request}) => {
     }
   }`;
   const data = await requestGraphql({query, variables:formDataObject })
-  console.log('««««« addnewNote »»»»»', data);
+  console.log('««««« addNewNote »»»»»', data);
 
   return data;
 }
