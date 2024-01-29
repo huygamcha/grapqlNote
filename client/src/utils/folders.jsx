@@ -6,7 +6,6 @@ export const folderList =  async () => {
            folders {
              id,
              name,
-             
            }
          }`;
       const data = await requestGraphql({query})
@@ -53,5 +52,23 @@ export const folderList =  async () => {
           console.log('««««« error »»»»»', error);
       }
     }
+
+    export const editFolder =  async (params) => {
+      console.log('««««« params »»»»»', params);
+      try {
+          const query = `mutation Mutation($id: String!, $name: String!) {
+            updateFolder(id: $id, name: $name) {
+              id
+              name
+            }
+          }`;
+            const data = await requestGraphql({query, variables: params})
+            return data;
+          
+      } catch (error) {
+          console.log('««««« error »»»»»', error);
+      }
+    }
+    
     
     

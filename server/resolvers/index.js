@@ -108,6 +108,12 @@ const resolvers = {
       return updateNote;
     },
 
+    updateFolder: async (parent, args) => {
+      const id = args.id;
+      const updateFolder = await FolderModel.findByIdAndUpdate(id, args);
+      return updateFolder;
+    },
+
     deleteNote: async (parent, args) => {
       const noteId = args.id;
       console.log("««««« noteId »»»»»", args);

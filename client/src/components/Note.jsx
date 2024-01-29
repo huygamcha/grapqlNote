@@ -66,7 +66,7 @@ function Note() {
     }, [note.id]);
 
     return (
-        <Editor editorState={editorState} onEditorStateChange={handleOnChange} placeholder="write something"></Editor>
+        <Editor  editorState={editorState} onEditorStateChange={handleOnChange} placeholder="Write something"></Editor>
     )
 }
 

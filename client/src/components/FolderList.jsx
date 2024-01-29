@@ -1,15 +1,10 @@
 /* eslint-disable react/prop-types */
-import {
-  List,
-  Card,
-  CardContent,
-  Box,
-  Typography,
-} from "@mui/material";
+import { List, Card, CardContent, Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import NewFolder from "./NewFolder";
 import ConfirmDelete from "./ConfirmDelete";
+import EditFolder from "./EditFolder";
 
 // eslint-disable-next-line react/prop-types
 function FolderList({ folders }) {
@@ -51,23 +46,35 @@ function FolderList({ folders }) {
         <Link to={`folders/${id}`} key={id} style={{ textDecoration: "none" }}>
           <Card
             style={{
-              display: 'flex',
-              justifyContent: 'space-between',
+              padding: '0px',
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
               fontSize: "18px",
               marginBottom: "15px",
               background: activeFolder === id ? "#fc9c9c" : "white",
             }}
           >
             <CardContent>
-
               <div
-                style={{ fontSize: 18, fontWeight: "bold" }}
+                style={{ fontSize: 20, fontWeight: "bold" }}
                 dangerouslySetInnerHTML={{
                   __html: `${name.substring(0, 15) || "Empty"}`,
                 }}
               />
             </CardContent>
-            <ConfirmDelete text='folder' />
+            <CardContent
+              style={{
+                padding: '0px',
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                background: activeFolder === id ? "#fc9c9c" : "white",
+              }}
+            >
+              <EditFolder id={id} name={name} />
+              <ConfirmDelete text="folder" />
+            </CardContent>
           </Card>
         </Link>
       ))}

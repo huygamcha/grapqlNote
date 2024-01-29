@@ -1,57 +1,45 @@
+/* eslint-disable react/prop-types */
 import { Tooltip, Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button } from '@mui/material'
 import { IconButton } from '@mui/material'
-import { CreateNewFolderOutlined } from '@mui/icons-material';
-import { useEffect, useState } from 'react';
-import { addNewFolder } from '../utils/folders';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { Fragment,  useState } from 'react';
+import {  editFolder } from '../utils/folders';
+import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
 
-function NewFolder() {
+function EditFolder({name, id}) {
+    console.log('««««« name »»»»»', name);
   const [open, setOpen] = useState(false)
-  const [newFolderName, setNewFolderName] = useState('')
-  const [searchParams, setSearchParams] = useSearchParams()
-  const navigate = useNavigate();
+  const [newFolderName, setNewFolderName] = useState(name)
 
-  const popupName = searchParams.get('popup')
 
   const handleClose = () => {
-    // setOpen(false)
-    setNewFolderName('')
-    navigate(-1);
+    setOpen(false)
+    setNewFolderName(name)
 
   }
   const handleOpenPopup = () => {
-    // setOpen(true)
-    setSearchParams({ popup: 'add-folder' });
+    setOpen(true)
   }
   const handleNewFolderNameChange = (e) => {
     setNewFolderName(e.target.value)
   }
   
   const handleAddNewFolder = async () => {
-    const addSuccess = await addNewFolder({name: newFolderName})
+    const addSuccess = await editFolder({id:id ,name: newFolderName})
     console.log('«««««  addSuccess»»»»»', addSuccess);
+    window.location.reload()
     handleClose()
   }
 
-  useEffect(() => {
-    if (popupName == 'add-folder') {
-        setOpen(true);
-        return
-    }
-
-    // khi add mới thì 'add-folder' không tồn tại nên close thẻ Input
-    setOpen(false);
-
-  }, [popupName])
+ 
   return (
-    <div>
-      <Tooltip title='Add Folder' onClick={handleOpenPopup}>
-        <IconButton  size='small'>
-          <CreateNewFolderOutlined sx={{ color: 'white' }} />
+    <Fragment>
+      <Tooltip title='Edit Folder' onClick={handleOpenPopup}>
+        <IconButton size='small'>
+          <ModeEditOutlineIcon sx={{ color: 'black' }} />
         </IconButton>
       </Tooltip>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add Folder</DialogTitle>
+        <DialogTitle>Edit Folder</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -72,8 +60,8 @@ function NewFolder() {
           <Button onClick={handleAddNewFolder}>OK</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Fragment>
   )
 }
 
-export default NewFolder
+export default EditFolder

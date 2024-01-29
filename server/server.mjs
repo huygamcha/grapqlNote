@@ -57,6 +57,7 @@ const typeDefs = `#graphql
         deleteFolder(id: String!): Folder
         updateNote(content: String!, id: String!): Note
         notification(content: String): Message
+        updateFolder(id: String!, name: String!): Folder
     }
 
     type Message {

@@ -5,8 +5,10 @@ import {
     DialogActions,
     DialogContentText,
     Button,
-    CardContent
+    CardContent,
+    Tooltip
 } from "@mui/material";
+import { IconButton } from '@mui/material'
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useState } from "react";
 import { useNavigate, useParams} from 'react-router-dom'
@@ -43,8 +45,13 @@ function ConfirmDelete({text}) {
 
 
     return (
-        <CardContent>
-            <DeleteOutlineIcon onClick={handleClickOpen} />
+        <CardContent style={{padding: '16px', paddingLeft: '0px'}} >
+            <Tooltip title='Edit Folder' onClick={handleClickOpen}>
+        <IconButton size='small'>
+        <DeleteOutlineIcon />
+        </IconButton>
+      </Tooltip>
+          
             <Dialog
                 open={open}
                 onClose={handleClose}

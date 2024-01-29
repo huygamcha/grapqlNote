@@ -111,7 +111,7 @@ function NoteList() {
                                 <CardContent>
                                     {/*  giới hạn chiều ngang của nội dung */}
                                     <div
-                                        style={{ fontSize: 18, fontWeight: "bold" }}
+                                        style={{ fontSize: 15}}
                                         dangerouslySetInnerHTML={{
                                             __html: `${content.substring(0, 30) || "Empty"}`,
                                         }}
