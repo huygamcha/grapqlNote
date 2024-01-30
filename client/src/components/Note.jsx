@@ -16,7 +16,7 @@ import { debounce } from '@mui/material';
 function Note() {
     const {data} = useLoaderData();
     const note = data.note
-    const location = useLocation();
+    const location = useLocation(); 
     const submit = useSubmit()
 
     // console.log('««««« note »»»»»', note);
@@ -66,7 +66,7 @@ function Note() {
     }, [note.id]);
 
     return (
-        <Editor  editorState={editorState} onEditorStateChange={handleOnChange} placeholder="Write something"></Editor>
+        <Editor editorStyle={{paddingLeft: '10px'}} editorState={editorState} onEditorStateChange={handleOnChange} placeholder="Write something"></Editor>
     )
 }
 

@@ -1,10 +1,10 @@
 import { Typography, Avatar, Menu, MenuItem, Box } from "@mui/material";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
-
+import LogoutIcon from "@mui/icons-material/Logout";
 function UserMenu() {
   const {
-    user: { photoURL , auth ,displayName},
+    user: { photoURL, auth, displayName },
   } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -21,7 +21,7 @@ function UserMenu() {
   };
   return (
     <>
-      <Box onClick={handleClick}>
+      <Box display="flex" onClick={handleClick}>
         <Typography>{displayName} </Typography>
         <Avatar
           alt="avatar"
@@ -35,7 +35,10 @@ function UserMenu() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <MenuItem onClick={handleLogout}>
+          <LogoutIcon />
+          Logout
+        </MenuItem>
       </Menu>
     </>
   );

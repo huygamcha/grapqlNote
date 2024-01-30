@@ -57,7 +57,7 @@ function FolderList({ folders }) {
           >
             <CardContent>
               <div
-                style={{ fontSize: 20, fontWeight: "bold" }}
+                style={{ fontSize: 20}}
                 dangerouslySetInnerHTML={{
                   __html: `${name.substring(0, 15) || "Empty"}`,
                 }}

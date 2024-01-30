@@ -46,7 +46,7 @@ function ConfirmDelete({text}) {
 
     return (
         <CardContent style={{padding: '16px', paddingLeft: '0px'}} >
-            <Tooltip title='Edit Folder' onClick={handleClickOpen}>
+            <Tooltip title={text == 'folder' ? 'Edit folder' : 'Edit Note'} onClick={handleClickOpen}>
         <IconButton size='small'>
         <DeleteOutlineIcon />
         </IconButton>
@@ -61,12 +61,12 @@ function ConfirmDelete({text}) {
                 <DialogTitle id="alert-dialog-title"></DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Bạn có muốn xoá folder này không?
+                        Are you sure you want to delete?
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button value="0" onClick={handleClose}>
-                        Không
+                        Nooo
                     </Button>
                     <Button
                         value="1"
@@ -74,7 +74,7 @@ function ConfirmDelete({text}) {
                         onClick={handleClose}
                         autoFocus
                     >
-                        Có
+                        Yes
                     </Button>
                 </DialogActions>
             </Dialog>
