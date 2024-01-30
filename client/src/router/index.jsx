@@ -27,7 +27,7 @@ export default createBrowserRouter([
         children: [
             {
                 element: <Login />,
-                path: '/login'
+                path: '/'
             },
             {
                 element: <ProtectRouter />,

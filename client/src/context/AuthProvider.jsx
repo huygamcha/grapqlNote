@@ -30,7 +30,7 @@ export default function AuthProvider({ children }) {
                 setIsLoading(false)
                 setUser({});
                 localStorage.clear();
-                navigate('/login');
+                navigate('/');
             }
         })
         // unmount
